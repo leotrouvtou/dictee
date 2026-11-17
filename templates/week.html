@@ -1,0 +1,77 @@
+  <!DOCTYPE HTML>
+  <html>
+  <head>
+  <link href="/statics/css/maps.css?202005042" rel="stylesheet">
+  <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+  </head>
+  <body>
+    <div id="main">
+      <a href='/'>< Retour à la liste de semaines</a>
+                    <h1>Liste des mots pour le {{week.name}}:</h1>
+
+                   <button  class="btn btn-success centered"
+           onclick="test()">Lancer un test</button>
+    <ul class="words">
+    {% for word in words %}
+     <li> <p>{{word.name}} <!-- <button  class="btn btn-success centered" -->
+           <!-- onclick="delete({{word.id}})">Supprimer le
+                mot</button -->
+                                           <audio controls src="/statics/son/{{word.id}}.wav"></audio>  <button  class="btn btn-success centered"
+           onclick="regenerate({{word.id}})">Regénérer</button></p></li>
+    {% endfor %}
+    </ul>
+
+     <input id="mot">
+  <button  class="btn btn-success centered"
+           onclick="add()">Ajouter un mot</button>
+  </div>
+  </body>
+  <script>
+    function add(){
+      name=document.getElementById('mot').value
+      $.ajax({
+        type: "POST",
+        url: "/createWord/{{week.id}}",
+        dataType: "json",
+        traditional: true,
+        data: {name: name},
+        success: function(data){
+          loc = '/week/{{week.id}}'
+          window.location = loc
+        }
+      });
+    }
+
+    function generate(wordId){
+      $.ajax({
+        type: "POST",
+        url: "/reloadWord/"+wordId,
+        dataType: "json",
+        traditional: true,
+        success: function(data){
+          loc = '/week/{{week.id}}'
+          window.location = loc
+        }
+      });
+    }
+
+    function test(){
+      loc = '/test/{{week.id}}'
+      window.location = loc
+    }
+    
+    // function delete( wordId ) {
+    //   $.ajax({
+    //     type: "POST",
+    //     url: "/deleteWord/{{week.id}}",
+    //     dataType: "json",
+    //     traditional: true,
+    //     data: {toDelete: wordId},
+    //     success: function(data){
+    //       loc = '/week/{{week.id}}'
+    //       window.location = loc
+    //     }
+    //   });
+    // }
+
+</script>

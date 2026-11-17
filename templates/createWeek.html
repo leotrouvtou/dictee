@@ -1,0 +1,36 @@
+  <!DOCTYPE HTML>
+  <html>
+  <head>
+  <link href="statics/css/maps.css?20042" rel="stylesheet">
+  <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+  </head>
+  <body>
+  <div id="message" class="alert alert-warning" ></div>
+
+  <div id="main" class="container">
+  <input id="name" type="date" name="anniversaire">
+  <button  class="btn btn-success centered"
+           onclick="create()">Ajouter</button>
+  </div>
+
+  </body>
+  </html>
+  <script>
+
+ 
+    function create(){
+      name=document.getElementById('name').value
+      $.ajax({
+        type: "POST",
+        url: "/createWeek",
+        dataType: "json",
+        traditional: true,
+        data: {name: name},
+        success: function(data){
+          loc = '/week/'+data.weekid
+          window.location = loc
+        }
+      });
+    }
+
+</script>

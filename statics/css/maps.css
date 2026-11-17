@@ -1,0 +1,42 @@
+#main {
+    margin: auto;
+    text-align: center;
+}
+
+
+.hidden {
+    display:none;
+}
+
+audio {
+
+    vertical-align: center;
+    border:10px solid #484848;
+    border-radius: 15px;
+}
+
+input, button, span {
+    vertical-align: center;
+    height: 4em;
+//    border:10px solid lightblue;
+    border-radius: 15px;
+}
+
+
+button.btn-success {
+    color: #fff;
+    background-color: #5cb85c;
+    font-weight:bold;
+    padding:10px;
+}
+
+.success {
+    color: #5cb85c;
+    font-weight:bold;
+}
+
+
+.wrong {
+    color: #d43f3a;
+    font-weight:bold;
+}

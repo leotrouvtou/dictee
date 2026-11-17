@@ -1,0 +1,20 @@
+  <!DOCTYPE HTML>
+  <html>
+  <head>
+  <link href="statics/css/maps.css?202005042" rel="stylesheet">
+  <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+  </head>
+  <body>
+    <div id="main">
+      <button class="btn-success" onclick="location.href='/createWeek';">
+        Nouvelle semaine
+      </button>
+    {% for week in weeks %}
+	<div class="title">
+          <a href="/week/{{week.id}}"><p>{{week.name}}</p> </a>
+
+	</div>
+    {% endfor %}
+  </div>
+  </body>
+  

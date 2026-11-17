@@ -1,0 +1,95 @@
+  <!DOCTYPE HTML>
+  <html>
+  <head>
+  <link href="/statics/css/maps.css?202005042" rel="stylesheet">
+  <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+  </head>
+  <body>
+    <div id="main">
+      <a href='/week/{{week.id}}'>< Retour à la liste de semaines</a>
+      <h1>Tests des mots pour le {{week.name}}:</h1>
+    <ul class="words">
+    {% for word in words %}
+    <li id="{{word.id}}"><p>
+        <!-- <button  class="btn btn-success centered" -->
+           <!-- onclick="delete({{word.id}})">Supprimer le
+                mot</button -->
+                      <audio controls id="audio{{word.id}}"
+                             src="/statics/son/{{word.id}}.wav"></audio>
+                      <input id="verif{{word.id}}"
+                             value="{{word.name}}" class="hidden">
+                      <input id="mot{{word.id}}">
+    <button  id="button{{word.id}}" class="btn btn-success centered"
+             onclick="check({{word.id}})">Valider</button>
+      <span id="success{{word.id}}" class="hidden success">Super
+        !</span>
+      <span id="wrong{{word.id}}" class="hidden wrong">Dommage
+        !</span>
+    </p></li>
+    {% endfor %}
+    </ul>
+
+  </div>
+  </body>
+  <script>
+    function add(){
+      name=document.getElementById('mot').value
+      $.ajax({
+        type: "POST",
+        url: "/createWord/{{week.id}}",
+        dataType: "json",
+        traditional: true,
+        data: {name: name},
+        success: function(data){
+          loc = '/week/{{week.id}}'
+          window.location = loc
+        }
+      });
+    }
+
+    
+    function check(wordId){
+      document.getElementById('button'+wordId).style.display = 'none';
+      mot=document.getElementById('mot'+wordId).value
+      verif=document.getElementById('verif'+wordId).value
+      if (mot.trim().toUpperCase()===verif.trim().toUpperCase()){
+      $.ajax({
+        type: "POST",
+        url: "/validateWord/"+wordId,
+        dataType: "json",
+        traditional: true,
+        success: function(data){
+          document.getElementById('success'+wordId).style.display = 'inline';
+        }
+      });
+      } else {
+         $.ajax({
+        type: "POST",
+        url: "/unvalidateWord/"+wordId,
+        dataType: "json",
+        traditional: true,
+           success: function(data){
+             
+          document.getElementById('audio'+wordId).style.display = 'none';
+          document.getElementById('verif'+wordId).style.display = 'inline';
+          document.getElementById('wrong'+wordId).style.display = 'inline';
+        }
+      });
+      }
+    }
+    
+    // function delete( wordId ) {
+    //   $.ajax({
+    //     type: "POST",
+    //     url: "/deleteWord/{{week.id}}",
+    //     dataType: "json",
+    //     traditional: true,
+    //     data: {toDelete: wordId},
+    //     success: function(data){
+    //       loc = '/week/{{week.id}}'
+    //       window.location = loc
+    //     }
+    //   });
+    // }
+
+</script>
