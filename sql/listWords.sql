@@ -1,1 +1,1 @@
-select * from words where weekid = ?;
+select * from words where weekid = ? order by success asc;

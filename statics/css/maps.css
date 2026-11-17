@@ -219,3 +219,9 @@ li.hide {
   -webkit-animation: out 700ms ease both;
   animation: out 700ms ease both;
 }
+
+.picto {
+    width: 1em;
+    
+
+}

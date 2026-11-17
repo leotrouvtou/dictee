@@ -23,9 +23,12 @@ onclick="test()">Lancer un test</button><br/>
                 mot</button>
   <button  class="btn btn-success centered"
 onclick="regenerate({{word.id}})">Regénérer</button> -->
-  {% if word.success == 1%}
+  {% if word.success == true %}
+<img class="picto" src="/statics/valid.png/">
+
 
 {% else %}
+<img class="picto"  src="/statics/invalid.png/">
 {% endif %}
   </p></li>
     {% endfor %}
