@@ -10,20 +10,23 @@
                     <h1>Liste des mots pour le {{week.name}}:</h1>
 
                    <button  class="btn btn-success centered"
-           onclick="test()">Lancer un test</button>
-    <ul class="words">
-    {% for word in words %}
-     <li> <p>{{word.name}} <!-- <button  class="btn btn-success centered" -->
-           <!-- onclick="delete({{word.id}})">Supprimer le
-                mot</button -->
-                                           <audio controls src="/statics/son/{{word.id}}.wav"></audio>  <button  class="btn btn-success centered"
-           onclick="regenerate({{word.id}})">Regénérer</button></p></li>
-    {% endfor %}
-    </ul>
+onclick="test()">Lancer un test</button><br/>
+
 
      <input id="mot">
   <button  class="btn btn-success centered"
            onclick="add()">Ajouter un mot</button>
+    <ul class="words"><br/>
+    {% for word in words %}
+     <li> <p>{{word.name}} <!-- <button  class="btn btn-success centered" -->
+           <!-- onclick="delete({{word.id}})">Supprimer le
+                mot</button>
+  <button  class="btn btn-success centered"
+onclick="regenerate({{word.id}})">Regénérer</button> -->
+  </p></li>
+    {% endfor %}
+    </ul>
+
   </div>
   </body>
   <script>
@@ -74,4 +77,12 @@
     //   });
     // }
 
+  $("input").keyup(function(event) {
+    if (event.keyCode === 13) {
+      add()
+    }
+  });
+$(document).ready(function(){
+  document.getElementById('mot').focus()
+});
 </script>

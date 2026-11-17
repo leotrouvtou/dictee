@@ -1,1 +1,1 @@
-select * from words where weekid == ? AND known <> true ORDER BY RANDOM();
+select * from words where weekid == ? AND success <> true ORDER BY RANDOM();

@@ -1,6 +1,9 @@
 #main {
     margin: auto;
     text-align: center;
+    background-image: url("/statics/fond.png");
+    background-size: contain;
+    height:800px
 }
 
 
@@ -15,6 +18,46 @@ audio {
     border-radius: 15px;
 }
 
+
+h1 {
+    width: 400px;
+  background: white;
+  padding: 10px;
+  border-radius: 40px;
+  margin:auto;
+  border:solid #95bc7d;
+  box-shadow: 5px 4px 4px #95bc7d;
+  margin-bottom: 20px
+
+
+}
+
+
+.title {
+    width: 400px;
+  background: white;
+  padding: 10px;
+  border-radius: 40px;
+  margin:auto;
+  border:solid #e99847;
+  box-shadow: 5px 4px 4px #e99847;
+  margin-bottom: 20px
+
+
+}
+
+.words {
+    width: 400px;
+  background: white;
+  padding: 10px;
+  border-radius: 40px;
+  margin:auto;
+  border:solid #e7ec85;
+  box-shadow: 5px 4px 4px #e7ec85;
+  margin-bottom: 20px
+
+
+}
 input, button, span {
     vertical-align: center;
     height: 4em;
@@ -39,4 +82,45 @@ button.btn-success {
 .wrong {
     color: #d43f3a;
     font-weight:bold;
+}
+
+
+@keyframes confettiFall {
+  0% {
+    transform: translateY(0) rotate(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(300px) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+
+
+button.play{
+    width: 6em;
+    height: 6em;
+    border-radius: 50%;
+    margin: 10px
+
+}
+
+audio{
+    display:none
+}
+
+#confettiBox{
+    width: 300px;
+  background: white;
+  padding: 10px;
+  border-radius: 40px;
+  margin:auto;
+  border:solid #5696b1;
+  box-shadow: 5px 4px 4px #5696b1;
+}
+
+
+ul {
+    padding: 0
 }
