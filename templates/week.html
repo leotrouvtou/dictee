@@ -23,6 +23,10 @@ onclick="test()">Lancer un test</button><br/>
                 mot</button>
   <button  class="btn btn-success centered"
 onclick="regenerate({{word.id}})">Regénérer</button> -->
+  {% if word.success == 1%}
+
+{% else %}
+{% endif %}
   </p></li>
     {% endfor %}
     </ul>
@@ -32,6 +36,7 @@ onclick="regenerate({{word.id}})">Regénérer</button> -->
   <script>
     function add(){
       name=document.getElementById('mot').value
+      if (name!=''){
       $.ajax({
         type: "POST",
         url: "/createWord/{{week.id}}",
@@ -43,6 +48,10 @@ onclick="regenerate({{word.id}})">Regénérer</button> -->
           window.location = loc
         }
       });
+      }else {
+         loc = '/week/{{week.id}}'
+        window.location = loc
+      }
     }
 
     function generate(wordId){
