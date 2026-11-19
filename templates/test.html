@@ -7,8 +7,8 @@
   <body>
   <div id="main">
   <a href='/week/{{week.id}}'>< Retour à la liste des mots de la semaine</a>
-  <h1>Ton entrainement:</h1>
-  <div id="confettiBox">
+  <h1 class="card">Ton entrainement:</h1>
+  <div id="confettiBox"  class="card">
   <ul>
   {% for word in words %}
   <li id="{{word.id}}" class="hidden"><p>
@@ -32,6 +32,11 @@ onclick="check({{word.id}})">Vérifier</button>
   <button id="next{{word.id}}" class="hidden" onclick="next({{word.id}})">Prochain mot</button>
   </p></li>
   {% endfor %}
+  <li class="hidden">
+  <img class="play" src="/statics/nice.gif"></img><br/>
+  <progress id="progress" class="max="{{words|length}}" value="0"></progress>
+  <a href='/week/{{week.id}}'>Retour à la liste des mots de la semaine</a>
+  </li>
 </ul>
   </div>
   </div>
@@ -72,6 +77,7 @@ function check(wordId){
 
         document.getElementById('success'+wordId).style.display = 'inline';
         currentLi = document.getElementById(wordId)
+        document.getElementById("progress").value = document.getElementById("progress").value+1
         setTimeout(function(){currentLi.style.display = 'none';},2000);
         setTimeout(function(){currentLi.nextElementSibling.style.display = 'inline';},2000);
         setTimeout(function(){play(currentLi.nextElementSibling.id)},2400);

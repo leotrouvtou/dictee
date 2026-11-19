@@ -4,7 +4,7 @@
     background-image: url("/statics/fond.png");
     background-size: contain;
     height:800px;
-           width:800px;
+    width:800px;
 }
 
 
@@ -19,18 +19,18 @@ audio {
     border-radius: 15px;
 }
 
+.card {
+    width: 400px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 40px;
+    margin:auto;
+    margin-bottom: 20px
+}
 
 h1 {
-    width: 400px;
-  background: white;
-  padding: 10px;
-  border-radius: 40px;
-  margin:auto;
   border:solid #95bc7d;
   box-shadow: 5px 4px 4px #95bc7d;
-  margin-bottom: 20px
-
-
 }
 
 
@@ -48,14 +48,8 @@ h1 {
 }
 
 .words {
-    width: 400px;
-  background: white;
-  padding: 10px;
-  border-radius: 40px;
-  margin:auto;
   border:solid #e7ec85;
   box-shadow: 5px 4px 4px #e7ec85;
-  margin-bottom: 20px
 
 
 }
@@ -99,15 +93,16 @@ button.btn-success {
 
 
 
-button.play{
+.play{
     width: 200px;
     height: 200px;
     border-radius: 50%;
     margin: 10px;
     background: no-repeat  url("/statics/talking2.gif");
     background-size: 200px;
-  resize: both;
-  overflow: ;
+    resize: both;
+    overflow: ;
+    background-color:white;
 }
 
 audio{
@@ -116,19 +111,17 @@ audio{
 
 #confettiBox{
     width: 300px;
-  background: white;
-  padding: 10px;
-  border-radius: 40px;
-  margin:auto;
-  border:solid #5696b1;
-  box-shadow: 5px 4px 4px #5696b1;
+    border:solid #5696b1;
+    box-shadow: 5px 4px 4px #5696b1;
 }
 
 
 ul {
     padding: 0
 }
-
+li {
+    list-style-type: none;
+}
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -224,4 +217,39 @@ li.hide {
     width: 1em;
     
 
+}
+
+
+
+progress[value] {
+  --w: 100%; /* The width */
+  /* The background property */
+  --b: /* static layers */
+      linear-gradient(#fff8,#fff0),
+      repeating-linear-gradient(135deg,#0003 0 10px,#0000 0 20px),
+      /* dynamic layers */
+      /* if < 30% "red" */
+      conic-gradient(red    0 0) 0 /calc(var(--w)*.3 - 100%) 1px,
+      /* if < 60% "orange" */
+      conic-gradient(orange 0 0) 0 /calc(var(--w)*.6 - 100%) 1px,
+      /* else "green" */
+      green;
+  appearance: none;
+  border: none;
+  width: var(--w); 
+  height: 20px;
+  background-color: lightgrey;
+  border-radius: 50px;
+}
+progress[value]::-webkit-progress-bar {
+  background-color: lightgrey;
+  border-radius: 50px;
+}
+progress[value]::-webkit-progress-value {
+  border-radius: 50px;
+  background: var(--b);
+}
+progress[value]::-moz-progress-bar {
+  border-radius: 50px;
+  background: var(--b);
 }

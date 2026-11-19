@@ -7,7 +7,7 @@
   <body>
     <div id="main">
       <a href='/'>< Retour à la liste de semaines</a>
-                    <h1>Liste des mots pour le {{week.name}}:</h1>
+                    <h1 class="card">Liste des mots pour le {{week.name}}:</h1>
 
                    <button  class="btn btn-success centered"
 onclick="test()">Lancer un test</button><br/>
@@ -15,8 +15,11 @@ onclick="test()">Lancer un test</button><br/>
 
      <input id="mot">
   <button  class="btn btn-success centered"
-           onclick="add()">Ajouter un mot</button>
-    <ul class="words"><br/>
+onclick="add()">Ajouter un mot</button><br/>
+  <ul class="words card"><br/>
+  Tu connais {{week.known}} mots sur {{week.total}} !
+  <li><progress max="{{week.total}}" value="{{week.known}}"></progress></li>
+
     {% for word in words %}
      <li> <p>{{word.name}} <!-- <button  class="btn btn-success centered" -->
            <!-- onclick="delete({{word.id}})">Supprimer le
